@@ -1,6 +1,10 @@
 name: Security Checks
 on: [push]
 
+permissions:
+  contents: write
+  issues: write
+
 jobs:
   test:
     name: OWASP ZAP SCANS
@@ -22,5 +26,5 @@ jobs:
            # Target URL
            target: "http://localhost:4000"
            fail_action: false
-           token: $
+           token: ${{ secrets.GITHUB_TOKEN }}
            issue_title: Security Tests
